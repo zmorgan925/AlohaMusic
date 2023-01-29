@@ -7,13 +7,14 @@ import { Audio, InterruptionModeAndroid, InterruptionModeIOS } from 'expo-av';
 
 SplashScreen.preventAutoHideAsync();
 setTimeout(SplashScreen.hideAsync, 2000);
+const something = require('./assets/music/ukulele.mp3');
 
-const playlist = [
+const playlist =
   {
+    //Ukulele MP3 will not work locally in same format
     title: 'Ukulele',
-    uri: 'C:/Users/zmorg/AlohaMusic/assets/music/ukulele.mp3'
-  }
-];
+    uri: 'https://ia601509.us.archive.org/17/items/mogwai2017-10-20.brussels.fm/Mogwai2017-10-20Brussels-07.mp3'
+  };
 
 const ukuleleImage = require('./assets/images/ukulele.png');
 
@@ -47,9 +48,9 @@ export default class App extends Component {
   }
 
   async loadAudio() {
-    const playbackInstance = new Audio.Sound();
+    const playbackInstance = new Audio.Sound()
     const source = {
-      uri: playlist[0].uri
+      uri: playlist.uri
     }
 		const status = {
 			shouldPlay: this.state.isPlaying,
